@@ -70,10 +70,10 @@ Commercial, managed, and cloud-hosted Shared Enterprise Microservices platforms.
 
 Self-hosted, community-driven Shared Enterprise Microservices tools. This includes high-throughput **API gateways** for north-south traffic, **service meshes** for east-west zero-trust networking, and **distributed application and integration runtimes** for cross-service workflow orchestration.
 
-Repos are ranked in descending order by GitHub star count:
+Repos are ranked in descending order by GitHub Stars_Count:
 
 ### ⚡ Traefik
-[![GitHub stars](https://img.shields.io/github/stars/traefik/traefik?style=social&color=white)](https://github.com/traefik/traefik/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/traefik/traefik?style=social&color=white)](https://github.com/traefik/traefik/stargazers)  
 **Stack:** Go | **License:** MIT | **Repository:** [traefik/traefik](https://github.com/traefik/traefik)  
 Traefik is a modern HTTP reverse proxy and ingress controller designed to deploy microservices with ease. It dynamically discovers routing configurations directly from orchestrators like Kubernetes, Docker, Swarm, and Consul without needing manual configuration reloads or daemon restarts.  
 🎯 **Best for:** Cloud-native and containerized workloads requiring automatic service discovery, dynamic configuration, and seamless ingress routing.
@@ -81,7 +81,7 @@ Traefik is a modern HTTP reverse proxy and ingress controller designed to deploy
 ---
 
 ### 🛡️ Kong Gateway
-[![GitHub stars](https://img.shields.io/github/stars/Kong/kong?style=social&color=white)](https://github.com/Kong/kong/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/Kong/kong?style=social&color=white)](https://github.com/Kong/kong/stargazers)  
 **Stack:** Lua / OpenResty / NGINX | **License:** Apache-2.0 | **Repository:** [Kong/kong](https://github.com/Kong/kong)  
 Kong is a cloud-native, fast, and modular API gateway and microservice management layer built on top of NGINX and OpenResty. It provides an extensible plugin architecture for authentication, rate limiting, traffic transformations, IP restriction, and observability.  
 🎯 **Best for:** High-throughput API gateway deployments requiring extensive authentication plugins, developer portals, and hybrid deployment flexibility.
@@ -89,7 +89,7 @@ Kong is a cloud-native, fast, and modular API gateway and microservice managemen
 ---
 
 ### 🕸️ Istio
-[![GitHub stars](https://img.shields.io/github/stars/istio/istio?style=social&color=white)](https://github.com/istio/istio/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/istio/istio?style=social&color=white)](https://github.com/istio/istio/stargazers)  
 **Stack:** Go / C++ (Envoy) | **License:** Apache-2.0 | **Repository:** [istio/istio](https://github.com/istio/istio)  
 Istio is the CNCF-graduated, industry-standard service mesh that transparently layers onto distributed applications. It provides traffic management (canary releases, fault injection, circuit breaking), zero-trust security with automated mTLS, and deep telemetry without modifying application code. Istio Ambient mode eliminates per-pod sidecars via node-level ztunnels and L7 waypoint proxies, cutting memory usage by up to 70%.  
 🎯 **Best for:** Large-scale Kubernetes enterprise deployments requiring mature multi-cluster traffic control, granular security policies, and comprehensive observability.
@@ -97,7 +97,7 @@ Istio is the CNCF-graduated, industry-standard service mesh that transparently l
 ---
 
 ### 🌐 HashiCorp Consul
-[![GitHub stars](https://img.shields.io/github/stars/hashicorp/consul?style=social&color=white)](https://github.com/hashicorp/consul/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/hashicorp/consul?style=social&color=white)](https://github.com/hashicorp/consul/stargazers)  
 **Stack:** Go | **License:** BSL-1.1 / MPL-2.0 | **Repository:** [hashicorp/consul](https://github.com/hashicorp/consul)  
 Consul is a multi-cloud service networking platform offering service discovery, health checking, key-value configuration storage, and service mesh connectivity across heterogeneous environments (Kubernetes, Nomad, VMs, bare metal). It supports WAN federation to connect microservices across distributed data centers.  
 🎯 **Best for:** Organizations operating hybrid architectures across Kubernetes and legacy VM infrastructure requiring unified service discovery and cross-datacenter federation.
@@ -105,7 +105,7 @@ Consul is a multi-cloud service networking platform offering service discovery, 
 ---
 
 ### 🏎️ Envoy Proxy
-[![GitHub stars](https://img.shields.io/github/stars/envoyproxy/envoy?style=social&color=white)](https://github.com/envoyproxy/envoy/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/envoyproxy/envoy?style=social&color=white)](https://github.com/envoyproxy/envoy/stargazers)  
 **Stack:** C++ | **License:** Apache-2.0 | **Repository:** [envoyproxy/envoy](https://github.com/envoyproxy/envoy)  
 Envoy is a high-performance open-source edge and service proxy designed for cloud-native applications. Originally built at Lyft and graduated by the CNCF, Envoy powers the data planes of Istio, Consul, AWS App Mesh, and Kuma. It provides dynamic discovery services (xDS), advanced load balancing, health checking, and end-to-end tracing.  
 🎯 **Best for:** Low-level, high-efficiency data plane networking and custom proxy infrastructure in hyper-scale microservices setups.
@@ -113,7 +113,7 @@ Envoy is a high-performance open-source edge and service proxy designed for clou
 ---
 
 ### 🧩 Dapr
-[![GitHub stars](https://img.shields.io/github/stars/dapr/dapr?style=social&color=white)](https://github.com/dapr/dapr/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/dapr/dapr?style=social&color=white)](https://github.com/dapr/dapr/stargazers)  
 **Stack:** Go | **License:** Apache-2.0 | **Repository:** [dapr/dapr](https://github.com/dapr/dapr)  
 Dapr (Distributed Application Runtime) provides event-driven building blocks for microservices development. Through a sidecar architecture accessible via HTTP and gRPC APIs, Dapr abstractly delivers state management, pub/sub messaging, service invocation, secret management, and distributed workflows regardless of programming language.  
 🎯 **Best for:** Developers seeking portable, language-agnostic abstractions for stateful microservices, event-driven workflows, and pub/sub messaging.
@@ -121,7 +121,7 @@ Dapr (Distributed Application Runtime) provides event-driven building blocks for
 ---
 
 ### 🐝 Cilium Service Mesh
-[![GitHub stars](https://img.shields.io/github/stars/cilium/cilium?style=social&color=white)](https://github.com/cilium/cilium/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/cilium/cilium?style=social&color=white)](https://github.com/cilium/cilium/stargazers)  
 **Stack:** Go / eBPF / C | **License:** Apache-2.0 | **Repository:** [cilium/cilium](https://github.com/cilium/cilium)  
 Cilium harnesses Linux eBPF technology to deliver high-performance networking, observability, and security for container workloads. Its sidecarless service mesh moves service routing, load balancing, and L3/L4/L7 policy enforcement into the Linux kernel space, drastically reducing packet latency and resource overhead.  
 🎯 **Best for:** Latency-sensitive microservices, real-time gaming, financial trading systems, and platforms already running Cilium CNI.
@@ -129,7 +129,7 @@ Cilium harnesses Linux eBPF technology to deliver high-performance networking, o
 ---
 
 ### 🔀 Apache APISIX
-[![GitHub stars](https://img.shields.io/github/stars/apache/apisix?style=social&color=white)](https://github.com/apache/apisix/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/apache/apisix?style=social&color=white)](https://github.com/apache/apisix/stargazers)  
 **Stack:** Lua / NGINX / etcd | **License:** Apache-2.0 | **Repository:** [apache/apisix](https://github.com/apache/apisix)  
 Apache APISIX is a top-level Apache Software Foundation dynamic, real-time, high-performance API gateway. It provides traffic routing, dynamic upstream configuration, rate limiting, and canary releases with hot-reloading powered by etcd, without needing process reboots.  
 🎯 **Best for:** Teams requiring dynamic real-time routing reconfigurations, cloud-native API management, and high concurrency.
@@ -137,7 +137,7 @@ Apache APISIX is a top-level Apache Software Foundation dynamic, real-time, high
 ---
 
 ### 🔗 Linkerd
-[![GitHub stars](https://img.shields.io/github/stars/linkerd/linkerd2?style=social&color=white)](https://github.com/linkerd/linkerd2/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/linkerd/linkerd2?style=social&color=white)](https://github.com/linkerd/linkerd2/stargazers)  
 **Stack:** Rust (Proxy) / Go (Control Plane) | **License:** Apache-2.0 | **Repository:** [linkerd/linkerd2](https://github.com/linkerd/linkerd2)  
 Linkerd is an ultra-light, security-first CNCF graduated service mesh for Kubernetes. Built around a dedicated Rust micro-proxy (`linkerd2-proxy`), it delivers automatic mutual TLS (mTLS), identity-based authentication, and latency telemetry with minimal CPU and memory footprints.  
 🎯 **Best for:** Kubernetes engineering teams demanding low-complexity operations, default-on mTLS security, and predictable resource overhead.
@@ -145,7 +145,7 @@ Linkerd is an ultra-light, security-first CNCF graduated service mesh for Kubern
 ---
 
 ### ⛩️ Envoy Gateway
-[![GitHub stars](https://img.shields.io/github/stars/envoyproxy/gateway?style=social&color=white)](https://github.com/envoyproxy/gateway/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/envoyproxy/gateway?style=social&color=white)](https://github.com/envoyproxy/gateway/stargazers)  
 **Stack:** Go | **License:** Apache-2.0 | **Repository:** [envoyproxy/gateway](https://github.com/envoyproxy/gateway)  
 Envoy Gateway is the official CNCF project designed to make Envoy easily usable as an API Gateway. It translates the standardized Kubernetes Gateway API directly into Envoy dynamic xDS configuration, streamlining edge proxy management.  
 🎯 **Best for:** Standardized Kubernetes Gateway API implementations powered by upstream Envoy without proprietary vendor lock-in.
@@ -153,7 +153,7 @@ Envoy Gateway is the official CNCF project designed to make Envoy easily usable 
 ---
 
 ### ⚡ KrakenD
-[![GitHub stars](https://img.shields.io/github/stars/krakend/krakend-ce?style=social&color=white)](https://github.com/krakend/krakend-ce/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/krakend/krakend-ce?style=social&color=white)](https://github.com/krakend/krakend-ce/stargazers)  
 **Stack:** Go | **License:** Apache-2.0 | **Repository:** [krakend/krakend-ce](https://github.com/krakend/krakend-ce)  
 KrakenD is a stateless, ultra-high-performance declarative API gateway that aggregates multiple downstream microservices into singular client-facing endpoints. Part of the Linux Foundation's Lura Project, it achieves 70,000+ requests/sec per node with sub-50MB memory utilization.  
 🎯 **Best for:** Backend-For-Frontend (BFF) patterns, API aggregation, and high-throughput microservices composition.
@@ -161,7 +161,7 @@ KrakenD is a stateless, ultra-high-performance declarative API gateway that aggr
 ---
 
 ### 🔄 WSO2 Micro Integrator
-[![GitHub stars](https://img.shields.io/github/stars/wso2/product-integrator-mi?style=social&color=white)](https://github.com/wso2/product-integrator-mi/stargazers)  
+[![GitHub_Stars](https://img.shields.io/github/stars/wso2/product-integrator-mi?style=social&color=white)](https://github.com/wso2/product-integrator-mi/stargazers)  
 **Stack:** Java | **License:** Apache-2.0 | **Repository:** [wso2/product-integrator-mi](https://github.com/wso2/product-integrator-mi)  
 WSO2 Micro Integrator is a cloud-native, container-optimized integration runtime. It serves as an open-source alternative to MuleSoft Anypoint, offering graphical and code-first enterprise integration patterns (EIP), data transformation, and native Kubernetes orchestration integration.  
 🎯 **Best for:** Complex enterprise integration patterns, ESB migration, legacy-to-cloud mediation, and MuleSoft alternatives.
@@ -225,3 +225,12 @@ This list is released under [CC0 1.0 Universal (Public Domain)](http://creativec
 <div align="center">
 ⭐ <b>If this list helped you design or optimize your microservices architecture, please consider starring the repository!</b> ⭐
 </div>
+
+## Star History
+
+<a href="https://star-history.com/#ishandutta2007/Awesome-Shared-Enterprise-Microservices&Timeline" align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/ishandutta2007_Awesome-Shared-Enterprise-Microservices_growth.svg">
+    <img alt="Star History Chart" src="assets/ishandutta2007_Awesome-Shared-Enterprise-Microservices_growth.svg">
+  </picture>
+</a>
