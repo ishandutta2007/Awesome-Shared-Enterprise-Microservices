@@ -70,7 +70,7 @@ Commercial, managed, and cloud-hosted Shared Enterprise Microservices platforms.
 
 Self-hosted, community-driven Shared Enterprise Microservices tools. This includes high-throughput **API gateways** for north-south traffic, **service meshes** for east-west zero-trust networking, and **distributed application and integration runtimes** for cross-service workflow orchestration.
 
-Repos are ranked in descending order by GitHub Stars_Count:
+Repos are ranked in descending order by GitHub_Stars_Count:
 
 ### ⚡ Traefik
 [![GitHub_Stars](https://img.shields.io/github/stars/traefik/traefik?style=social&color=white)](https://github.com/traefik/traefik/stargazers)  
