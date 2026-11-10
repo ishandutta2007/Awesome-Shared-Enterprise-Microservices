@@ -2,118 +2,198 @@
 
 # Awesome Shared Enterprise Microservices
 
-> A curated list of top Shared Enterprise Microservices platforms — both SaaS/Hosted commercial solutions and open-source alternatives for service mesh, API gateways, and integration runtimes that provide shared infrastructure for microservices architectures.
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Track Awesome List Updates](https://img.shields.io/badge/updates-tracked-brightgreen.svg)](https://github.com/ishandutta2007/Awesome-Shared-Enterprise-Microservices)
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+
+> A curated list of top Shared Enterprise Microservices platforms — both SaaS/Hosted commercial solutions and open-source alternatives for service mesh, API gateways, integration runtimes, and distributed application runtimes that power shared infrastructure for microservices architectures.
 > 🌟 Star this repo if you find it useful! 🌟
 
 ---
 
 ## 📋 Table of Contents
 
+- [Sector Overview & Market Dynamics](#-sector-overview--market-dynamics)
 - [SaaS / Hosted Platforms](#-saas--hosted-platforms)
-  - [Istio](#istio)
-  - [Linkerd](#linkerd)
-  - [HashiCorp Consul](#hashicorp-consul)
-  - [Kong Enterprise](#kong-enterprise)
-  - [AWS App Mesh](#aws-app-mesh)
-  - [MuleSoft Anypoint Platform](#mulesoft-anypoint-platform)
 - [Open-Source Software](#-open-source-software)
-  - [KrakenD](#krakend)
-  - [WSO2 Micro Integrator](#wso2-micro-integrator)
+  - [Traefik](#traefik)
+  - [Kong Gateway](#kong-gateway)
+  - [Istio](#istio)
+  - [HashiCorp Consul](#hashicorp-consul)
+  - [Envoy Proxy](#envoy-proxy)
+  - [Dapr](#dapr)
   - [Cilium Service Mesh](#cilium-service-mesh)
   - [Apache APISIX](#apache-apisix)
+  - [Linkerd](#linkerd)
+  - [Envoy Gateway](#envoy-gateway)
+  - [KrakenD](#krakend)
+  - [WSO2 Micro Integrator](#wso2-micro-integrator)
 - [Comparison at a Glance](#-comparison-at-a-glance)
 - [Contributing](#-contributing)
+- [License](#-license)
+
+---
+
+## 📈 Sector Overview & Market Dynamics
+
+The global microservices architecture and application networking sector (spanning API gateways, service meshes, and integration runtimes) is valued at approximately **$12.5 Billion** and projected to exceed **$65 Billion by 2033**, compounding at an aggressive **22% to 26% CAGR**. The sector exhibits a **hybrid, moderately concentrated structure** at the cloud infrastructure layer—where hyperscalers like AWS, Google Cloud, and Microsoft dominate foundational hosting—while remaining **highly fragmented and innovatively competitive** across specialized application networking layers where vendors like Kong, HashiCorp, Solo.io, and vibrant open-source CNCF projects compete vigorously for developer adoption and multi-cloud enterprise traffic control.
 
 ---
 
 ## 🟦 SaaS / Hosted Platforms
 
-Commercial, cloud-hosted Shared Enterprise Microservices platforms. These are not open-source (though some have open-source cores) but are included as reference points for feature comparison.
+Commercial, managed, and cloud-hosted Shared Enterprise Microservices platforms. The table below is ordered by company size (valuation / annual revenue, descending) and provides exact starting tier pricing alongside specific free tier or free trial limits.
 
-### Istio
-**Type:** Feature-rich service mesh with ambient mode  
-Istio is the most feature-rich service mesh, offering mature ambient mode (no sidecars), strong multi-cluster support, rich traffic management, and a broad ecosystem [citation:5]. Its ambient mode replaces per-pod sidecar proxies with a layered architecture: ztunnel on each node handles L4/mTLS, and waypoint proxies handle L7 features only when needed, reducing resource usage by 50-70% compared to sidecar mode [citation:5]. Istio provides the full Envoy feature set through Kubernetes-native configuration, including header-based routing, fault injection, traffic mirroring, and sophisticated retry policies [citation:14]. **Trade-off:** Complexity is higher than Linkerd, and the operational footprint (even in ambient mode) requires dedicated platform expertise.
-
-### Linkerd
-**Type:** Simple, lightweight service mesh  
-Linkerd is described as the simplest production service mesh — opinionated, easy to operate, with great performance and CNCF graduated status [citation:5]. It uses a purpose-built Rust proxy with mTLS default-on requiring no configuration, automatic certificate rotation, and identity-based authorization [citation:5]. Resource overhead is modest: roughly 3-6GB memory and 2-4 vCPU for a 200-pod cluster [citation:14]. **Trade-off:** Linkerd does not support the full range of traffic management capabilities that Istio offers — no equivalent to VirtualService for complex routing, no built-in egress management, and limited external authorization integration [citation:14].
-
-### HashiCorp Consul
-**Type:** Service mesh with multi-platform support  
-Consul Connect provides service mesh capabilities with a focus on multi-platform support (Kubernetes, ECS, VM, bare-metal) and WAN federation for cross-datacenter connectivity [citation:7]. It offers mTLS with Vault integration for certificate management, traffic splitting, retries, and timeouts through service-router and service-splitter configuration entries [citation:14]. **Trade-off:** Resource overhead is the highest among the major meshes — 20-40GB memory and 15-60 vCPU for a 200-pod cluster due to Envoy sidecars plus Consul agents [citation:14].
-
-### Kong Enterprise
-**Type:** API gateway with enterprise management  
-Kong Enterprise extends the open-source Kong Gateway with advanced features including RBAC, FIPS 140-2 compliant data planes, OpenID Connect, advanced rate limiting, consumer groups, and a developer portal . It is named a Gartner Magic Quadrant Leader for API Management for the sixth consecutive year . Deployment options include self-managed (Kong Manager) and SaaS (Konnect). **Trade-off:** Enterprise licensing starts at approximately $24,000/year, and the feature split between OSS and Enterprise is significant [citation:28].
-
-### AWS App Mesh
-**Type:** AWS-managed service mesh (deprecated)  
-AWS App Mesh is AWS's managed service mesh offering, built on Envoy proxies with ACM-based certificates and IAM integration [citation:5]. **Critical note:** AWS has deprecated App Mesh in favor of VPC Lattice, which is not technically a service mesh but solves many of the same problems at the VPC level without proxies or sidecars [citation:14]. New deployments should evaluate VPC Lattice or migrate to Istio/Linkerd instead.
-
-### MuleSoft Anypoint Platform
-**Type:** Enterprise integration and API management  
-MuleSoft Anypoint Platform is an enterprise integration platform combining API management with ESB capabilities. It offers a visual design studio, 300+ pre-built connectors, DataWeave transformation, and CloudHub hosting [citation:27]. **Trade-off:** MuleSoft locks you in through proprietary DataWeave, XML flow definitions, and Anypoint Connector SDK — migration requires rewriting every transformation and custom connector [citation:16]. Pricing is enterprise-quoted, typically $100K+/year [citation:28].
+| Product / Platform | Company | Scale (Valuation / Revenue) | Starting Pricing (Specific Tier) | Free Tier / Free Trial Limits | Key Capabilities |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **AWS App Mesh & VPC Lattice** | Amazon (AWS) | **$2.2T+ Market Cap** ($105B+ AWS ARR) | **VPC Lattice:** Starts at **$0.025/hour per service** associated + $0.025/GB data processed; **App Mesh:** $0 control plane (pay for underlying container compute) | **VPC Lattice:** First **300,000 requests/hour** per service network are **free forever**; standard AWS compute free tier applies to App Mesh Envoy tasks | Managed Layer-7 application networking across VPCs/accounts without sidecars; built-in service-to-service auth & IAM integration |
+| **Google Cloud Apigee** | Google Cloud (Alphabet) | **$2.1T+ Market Cap** ($43B+ GCP ARR) | **Pay-As-You-Go:** Starts at **$365/month** base environment fee (~$0.04/hour) + $20 per 1M standard API proxy calls | **60-Day Evaluation Tier** with full sandbox capabilities for testing and non-production prototyping ($0 for 60 days) | Enterprise-grade full lifecycle API management, advanced developer portals, automated AI security, multi-cloud traffic routing |
+| **MuleSoft Anypoint Platform** | Salesforce | **$300B+ Market Cap** ($38B+ Annual Revenue) | **Integration Starter:** Starts at **$2,000/month** (~$24,000/year billed annually) for entry-level flow/core pack capacity | **30-Day Free Trial** with full platform access (visual design studio, connectors, mock services; non-production environments only) | Comprehensive enterprise integration and ESB platform, visual data mapper (DataWeave), 300+ enterprise SaaS connectors |
+| **HCP Consul** | HashiCorp (IBM) | **$6.4B Acquisition Valuation** (~$580M ARR) | **HCP Consul Development:** Starts at **$0.027/hour** (~$19.70/month) for a single-node non-production development cluster | **$500 Free Platform Credits** upon signup valid across HCP services for initial evaluation; no permanent managed free tier | Multi-cloud service mesh and service discovery control plane, zero-trust mTLS encryption, automated service catalog federation |
+| **Kong Konnect** | Kong Inc. | **$2.0B Valuation** ($100M+ ARR) | **Konnect Plus:** Starts at **$25/month** per control plane (serverless) or **$200/month** (hybrid customer-hosted data planes), including 1M requests/month ($0.20 per 1k additional requests) | **30-Day Free Trial** with enterprise features; or self-hosted **Kong Gateway OSS** free forever under Apache-2.0 | High-performance API management and service mesh SaaS control plane, sub-millisecond proxying, multi-runtime plugin ecosystem |
+| **Tetrate Service Bridge (TSB)** | Tetrate | **$158M Valuation** ($52.5M Funded; ~$15M ARR) | **Tetrate Istio Subscription (TIS):** Enterprise tiers start at **$1,500/month** (or $150,000/year 5-cluster enterprise packs via AWS Marketplace) | **Tetrate Istio Distro (TID)** is **100% free forever** for upstream vetted Istio binaries; enterprise features available via custom 30-day proof-of-concept trial | Enterprise management plane for Istio and Envoy, FedRAMP/FIPS 140-2 compliance, automated multi-cluster cross-cloud service mesh |
+| **Buoyant Enterprise for Linkerd (BEL)** | Buoyant | **$40M Valuation** ($24M Funded; ~$3M ARR) | **Production Commercial:** Starts at approximately **$2,000/month per cluster** for enterprise support and SLA packages | **Free Forever in Production** for companies with **<50 total employees**; **100% free forever for non-production/staging** use for any organization | Ultra-lightweight Rust-based service mesh distribution, automated mTLS, high-availability zero-loss (HAZL) routing |
 
 ---
 
 ## 🟩 Open-Source Software
 
-Self-hosted, community-driven Shared Enterprise Microservices tools. The open-source ecosystem spans **API gateways** for traffic management and **integration runtimes** for service orchestration.
+Self-hosted, community-driven Shared Enterprise Microservices tools. This includes high-throughput **API gateways** for north-south traffic, **service meshes** for east-west zero-trust networking, and **distributed application and integration runtimes** for cross-service workflow orchestration.
 
-### KrakenD
-**Stack:** Go | **License:** Apache-2.0  
-KrakenD is an ultra-high performance, stateless, declarative API Gateway that aggregates multiple microservices into single endpoints [citation:3][citation:8]. Key features include content aggregation and transformation (XML to JSON), zero-trust security (OAuth, JWT, CORS, HSTS), multi-layer rate limiting, circuit breaking, and telemetry integration (Datadog, Zipkin, Jaeger, Prometheus, Grafana) [citation:3]. It claims **70K+ requests/second on a single instance** with under 50MB memory for 1000+ concurrent connections, thanks to its stateless design with true linear scalability [citation:3]. Configuration is GitOps-oriented and declarative. Part of the Lura Project under the Linux Foundation [citation:8].  
-**Best for:** Teams wanting a high-performance, stateless API gateway for aggregating microservices without the operational overhead of a full service mesh.
+Repos are ranked in descending order by GitHub star count:
 
-### WSO2 Micro Integrator
-**Stack:** Java | **License:** Apache-2.0  
-WSO2 Micro Integrator is a cloud-native integration runtime rebuilt for Kubernetes — it boots in seconds, exposes Prometheus metrics natively, and integrates with any orchestrator without special accommodations [citation:16]. It is positioned as an open-source alternative to MuleSoft, with 100% free connectors, no vendor lock-in, and deployment flexibility including fully on-premises [citation:20]. The component model is designed to be assembled: you bring your own platform, WSO2 brings the runtime. Renewal escalation is capped at 5% (vs. MuleSoft's 5-10%) [citation:16]. **Trade-off:** You run the platform yourself; if you lack an SRE team, a managed offering may be preferable [citation:16].  
-**Best for:** Organizations with Kubernetes expertise wanting an open-source integration runtime without MuleSoft's lock-in and cost structure.
+### Traefik
+[![GitHub stars](https://img.shields.io/github/stars/traefik/traefik?style=social&color=white)](https://github.com/traefik/traefik/stargazers)  
+**Stack:** Go | **License:** MIT | **Repository:** [traefik/traefik](https://github.com/traefik/traefik)  
+Traefik is a modern HTTP reverse proxy and ingress controller designed to deploy microservices with ease. It dynamically discovers routing configurations directly from orchestrators like Kubernetes, Docker, Swarm, and Consul without needing manual configuration reloads or daemon restarts.  
+**Best for:** Cloud-native and containerized workloads requiring automatic service discovery, dynamic configuration, and seamless ingress routing.
+
+---
+
+### Kong Gateway
+[![GitHub stars](https://img.shields.io/github/stars/Kong/kong?style=social&color=white)](https://github.com/Kong/kong/stargazers)  
+**Stack:** Lua / OpenResty / NGINX | **License:** Apache-2.0 | **Repository:** [Kong/kong](https://github.com/Kong/kong)  
+Kong is a cloud-native, fast, and modular API gateway and microservice management layer built on top of NGINX and OpenResty. It provides an extensible plugin architecture for authentication, rate limiting, traffic transformations, IP restriction, and observability.  
+**Best for:** High-throughput API gateway deployments requiring extensive authentication plugins, developer portals, and hybrid deployment flexibility.
+
+---
+
+### Istio
+[![GitHub stars](https://img.shields.io/github/stars/istio/istio?style=social&color=white)](https://github.com/istio/istio/stargazers)  
+**Stack:** Go / C++ (Envoy) | **License:** Apache-2.0 | **Repository:** [istio/istio](https://github.com/istio/istio)  
+Istio is the CNCF-graduated, industry-standard service mesh that transparently layers onto distributed applications. It provides traffic management (canary releases, fault injection, circuit breaking), zero-trust security with automated mTLS, and deep telemetry without modifying application code. Istio Ambient mode eliminates per-pod sidecars via node-level ztunnels and L7 waypoint proxies, cutting memory usage by up to 70%.  
+**Best for:** Large-scale Kubernetes enterprise deployments requiring mature multi-cluster traffic control, granular security policies, and comprehensive observability.
+
+---
+
+### HashiCorp Consul
+[![GitHub stars](https://img.shields.io/github/stars/hashicorp/consul?style=social&color=white)](https://github.com/hashicorp/consul/stargazers)  
+**Stack:** Go | **License:** BSL-1.1 / MPL-2.0 | **Repository:** [hashicorp/consul](https://github.com/hashicorp/consul)  
+Consul is a multi-cloud service networking platform offering service discovery, health checking, key-value configuration storage, and service mesh connectivity across heterogeneous environments (Kubernetes, Nomad, VMs, bare metal). It supports WAN federation to connect microservices across distributed data centers.  
+**Best for:** Organizations operating hybrid architectures across Kubernetes and legacy VM infrastructure requiring unified service discovery and cross-datacenter federation.
+
+---
+
+### Envoy Proxy
+[![GitHub stars](https://img.shields.io/github/stars/envoyproxy/envoy?style=social&color=white)](https://github.com/envoyproxy/envoy/stargazers)  
+**Stack:** C++ | **License:** Apache-2.0 | **Repository:** [envoyproxy/envoy](https://github.com/envoyproxy/envoy)  
+Envoy is a high-performance open-source edge and service proxy designed for cloud-native applications. Originally built at Lyft and graduated by the CNCF, Envoy powers the data planes of Istio, Consul, AWS App Mesh, and Kuma. It provides dynamic discovery services (xDS), advanced load balancing, health checking, and end-to-end tracing.  
+**Best for:** Low-level, high-efficiency data plane networking and custom proxy infrastructure in hyper-scale microservices setups.
+
+---
+
+### Dapr
+[![GitHub stars](https://img.shields.io/github/stars/dapr/dapr?style=social&color=white)](https://github.com/dapr/dapr/stargazers)  
+**Stack:** Go | **License:** Apache-2.0 | **Repository:** [dapr/dapr](https://github.com/dapr/dapr)  
+Dapr (Distributed Application Runtime) provides event-driven building blocks for microservices development. Through a sidecar architecture accessible via HTTP and gRPC APIs, Dapr abstractly delivers state management, pub/sub messaging, service invocation, secret management, and distributed workflows regardless of programming language.  
+**Best for:** Developers seeking portable, language-agnostic abstractions for stateful microservices, event-driven workflows, and pub/sub messaging.
+
+---
 
 ### Cilium Service Mesh
-**Stack:** Go / eBPF | **License:** Apache-2.0  
-Cilium Service Mesh uses eBPF and the Cilium agent for node-level L3/L4 processing, with selected L7 traffic redirected to Envoy [citation:7]. It is recommended for latency-sensitive applications (real-time trading, gaming) due to its lower overhead compared to sidecar-based meshes [citation:5]. It provides mTLS, network policies, and observability without the sidecar injection model. **Trade-off:** L7 capability is conditional on the actual path — Cilium uses eBPF for L3/L4 but requires Envoy for L7 enforcement [citation:7].  
-**Best for:** Performance-sensitive workloads and teams already using Cilium as their CNI wanting to extend into service mesh capabilities.
+[![GitHub stars](https://img.shields.io/github/stars/cilium/cilium?style=social&color=white)](https://github.com/cilium/cilium/stargazers)  
+**Stack:** Go / eBPF / C | **License:** Apache-2.0 | **Repository:** [cilium/cilium](https://github.com/cilium/cilium)  
+Cilium harnesses Linux eBPF technology to deliver high-performance networking, observability, and security for container workloads. Its sidecarless service mesh moves service routing, load balancing, and L3/L4/L7 policy enforcement into the Linux kernel space, drastically reducing packet latency and resource overhead.  
+**Best for:** Latency-sensitive microservices, real-time gaming, financial trading systems, and platforms already running Cilium CNI.
+
+---
 
 ### Apache APISIX
-**Stack:** Lua / NGINX / etcd | **License:** Apache-2.0  
-Apache APISIX is a dynamic, high-performance API gateway built on NGINX and etcd, offering traffic management, security, observability, and a plugin ecosystem. (Note: Search results did not include APISIX specifics; this entry is based on general knowledge — verify current maintenance before adoption.)  
-**Best for:** Teams wanting a proven, Apache-governed API gateway with dynamic configuration and a rich plugin ecosystem.
+[![GitHub stars](https://img.shields.io/github/stars/apache/apisix?style=social&color=white)](https://github.com/apache/apisix/stargazers)  
+**Stack:** Lua / NGINX / etcd | **License:** Apache-2.0 | **Repository:** [apache/apisix](https://github.com/apache/apisix)  
+Apache APISIX is a top-level Apache Software Foundation dynamic, real-time, high-performance API gateway. It provides traffic routing, dynamic upstream configuration, rate limiting, and canary releases with hot-reloading powered by etcd, without needing process reboots.  
+**Best for:** Teams requiring dynamic real-time routing reconfigurations, cloud-native API management, and high concurrency.
+
+---
+
+### Linkerd
+[![GitHub stars](https://img.shields.io/github/stars/linkerd/linkerd2?style=social&color=white)](https://github.com/linkerd/linkerd2/stargazers)  
+**Stack:** Rust (Proxy) / Go (Control Plane) | **License:** Apache-2.0 | **Repository:** [linkerd/linkerd2](https://github.com/linkerd/linkerd2)  
+Linkerd is an ultra-light, security-first CNCF graduated service mesh for Kubernetes. Built around a dedicated Rust micro-proxy (`linkerd2-proxy`), it delivers automatic mutual TLS (mTLS), identity-based authentication, and latency telemetry with minimal CPU and memory footprints.  
+**Best for:** Kubernetes engineering teams demanding low-complexity operations, default-on mTLS security, and predictable resource overhead.
+
+---
+
+### Envoy Gateway
+[![GitHub stars](https://img.shields.io/github/stars/envoyproxy/gateway?style=social&color=white)](https://github.com/envoyproxy/gateway/stargazers)  
+**Stack:** Go | **License:** Apache-2.0 | **Repository:** [envoyproxy/gateway](https://github.com/envoyproxy/gateway)  
+Envoy Gateway is the official CNCF project designed to make Envoy easily usable as an API Gateway. It translates the standardized Kubernetes Gateway API directly into Envoy dynamic xDS configuration, streamlining edge proxy management.  
+**Best for:** Standardized Kubernetes Gateway API implementations powered by upstream Envoy without proprietary vendor lock-in.
+
+---
+
+### KrakenD
+[![GitHub stars](https://img.shields.io/github/stars/krakend/krakend-ce?style=social&color=white)](https://github.com/krakend/krakend-ce/stargazers)  
+**Stack:** Go | **License:** Apache-2.0 | **Repository:** [krakend/krakend-ce](https://github.com/krakend/krakend-ce)  
+KrakenD is a stateless, ultra-high-performance declarative API gateway that aggregates multiple downstream microservices into singular client-facing endpoints. Part of the Linux Foundation's Lura Project, it achieves 70,000+ requests/sec per node with sub-50MB memory utilization.  
+**Best for:** Backend-For-Frontend (BFF) patterns, API aggregation, and high-throughput microservices composition.
+
+---
+
+### WSO2 Micro Integrator
+[![GitHub stars](https://img.shields.io/github/stars/wso2/product-integrator-mi?style=social&color=white)](https://github.com/wso2/product-integrator-mi/stargazers)  
+**Stack:** Java | **License:** Apache-2.0 | **Repository:** [wso2/product-integrator-mi](https://github.com/wso2/product-integrator-mi)  
+WSO2 Micro Integrator is a cloud-native, container-optimized integration runtime. It serves as an open-source alternative to MuleSoft Anypoint, offering graphical and code-first enterprise integration patterns (EIP), data transformation, and native Kubernetes orchestration integration.  
+**Best for:** Complex enterprise integration patterns, ESB migration, legacy-to-cloud mediation, and MuleSoft alternatives.
 
 ---
 
 ## 📊 Comparison at a Glance
 
-| Software | License | Stack | Type | Traffic Management | Multi-Cluster | Self-Hosted | Best For |
-|----------|---------|-------|------|-------------------|---------------|-------------|----------|
-| **Istio** | Apache-2.0 | Go/Envoy | Service mesh | ✅ Full Envoy set | ✅ Mature | ✅ | Feature-rich mesh |
-| **Linkerd** | Apache-2.0 | Rust | Service mesh | ✅ Basic (splitting, retries) | ✅ Mirroring | ✅ | Operational simplicity |
-| **Consul** | MPL-2.0 | Go/Envoy | Service mesh | ✅ Splitting, retries | ✅ WAN federation | ✅ | Multi-platform mesh |
-| **Kong Enterprise** | Proprietary | Lua/NGINX | API gateway | ✅ Plugins | (Konnect) | ✅ (self-managed) | Enterprise API management |
-| **AWS App Mesh** | Proprietary | Envoy | Service mesh | ✅ Basic | (AWS) | ❌ | Deprecated (use VPC Lattice) |
-| **MuleSoft** | Proprietary | Java | Integration + API | (ESB flows) | (CloudHub) | (Runtime Fabric) | Enterprise integration |
-| **KrakenD** | Apache-2.0 | Go | API gateway | ✅ Aggregation + rate limit | (Stateless) | ✅ | High-performance aggregation |
-| **WSO2 MI** | Apache-2.0 | Java | Integration runtime | (Mediation) | (K8s) | ✅ | Open-source MuleSoft alternative |
+| Software | License | Stack | Category | Traffic Scope | Multi-Cluster | Architecture Pattern | Best For |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Traefik** | MIT | Go | Ingress / API Gateway | North-South | Via Ingress / Hub | Dynamic Reverse Proxy | Automatic container routing |
+| **Kong Gateway** | Apache-2.0 | Lua / NGINX | API Gateway | North-South | Multi-Region Data Planes | Plugin-Driven Gateway | Full API management & auth plugins |
+| **Istio** | Apache-2.0 | Go / C++ | Service Mesh | East-West & Gateway | ✅ Native Multi-Cluster | Sidecar & Ambient (Node Proxy) | Feature-rich zero-trust service mesh |
+| **Consul** | BSL / MPL | Go | Service Mesh / Discovery | East-West & North-South | ✅ WAN Federation | Agent + Envoy Proxy | Hybrid K8s + VM heterogeneous fleets |
+| **Envoy Proxy** | Apache-2.0 | C++ | L4 / L7 Data Plane | North-South & East-West | Via Control Plane (xDS) | Thread-per-Core Proxy | Hyper-scale proxy data plane |
+| **Dapr** | Apache-2.0 | Go | Distributed App Runtime | Application Inter-service | Multi-Cluster / Edge | Sidecar Building Blocks | State management, Pub/Sub & actor workflows |
+| **Cilium** | Apache-2.0 | Go / eBPF | Service Mesh / CNI | East-West & L7 Ingress | ✅ Cluster Mesh | Kernel-Level eBPF (Sidecarless) | Latency-critical networking & eBPF security |
+| **Apache APISIX** | Apache-2.0 | Lua / NGINX | API Gateway | North-South | Multi-Zone via etcd | Dynamic Hot-Reload Gateway | High-concurrency dynamic API routing |
+| **Linkerd** | Apache-2.0 | Rust / Go | Service Mesh | East-West | ✅ Mirroring | Ultra-light Rust Sidecar | Low-overhead zero-trust security & mTLS |
+| **Envoy Gateway** | Apache-2.0 | Go | Kubernetes Gateway | North-South | Multi-Cluster Gateway API | K8s Gateway API Controller | Standardized K8s ingress & routing |
+| **KrakenD** | Apache-2.0 | Go | Aggregation Gateway | North-South | Stateless Horizontal | Stateless BFF Aggregator | High-speed API aggregation & composition |
+| **WSO2 MI** | Apache-2.0 | Java | Integration Runtime | Orchestration / EIP | Kubernetes Deployments | Containerized Integration Engine | Enterprise service bus & mediation |
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you know of an open-source Shared Enterprise Microservices tool that should be listed here, please open a pull request with:
+Contributions are welcome! If you know of an enterprise microservices platform, API gateway, service mesh, or distributed runtime that should be listed here, please open a pull request with:
 
-- Project name and URL
-- Brief description (1–2 sentences)
-- Stack and license
-- Why it stands out
+- Project name, official website, and GitHub repository URL
+- Concise description highlighting core architecture
+- Supported tech stack and open-source license
+- Specific architectural differentiation and ideal enterprise use case
 
-Please ensure the project is actively maintained (releases within the last 12 months) and genuinely open-source. Note that the ecosystem **splits** between **service meshes** (Istio, Linkerd, Consul) for east-west traffic, **API gateways** (KrakenD, Kong) for north-south traffic and aggregation, and **integration runtimes** (WSO2 MI, MuleSoft) for service orchestration. **Istio** is the feature leader with ambient mode reducing overhead [citation:5], **Linkerd** is the operational simplicity choice [citation:5], and **KrakenD** is the high-performance aggregation gateway for microservices [citation:3]. For MuleSoft migration, **WSO2 Micro Integrator** is the most direct open-source alternative with Kubernetes-native design [citation:16][citation:20].
+Please ensure proposed open-source projects are actively maintained (releases or commits within the last 12 months) with transparent source code availability.
 
 ---
 
 ## 📄 License
 
-This list is released under CC0 1.0 Universal (Public Domain). The software projects listed retain their respective licenses.
+This list is released under [CC0 1.0 Universal (Public Domain)](http://creativecommons.org/publicdomain/zero/1.0/). The individual software projects listed retain their respective commercial and open-source licenses.
 
 ---
 
-⭐ **If this list helped you discover a useful tool, please star the repo!** ⭐
+⭐ **If this list helped you design or optimize your microservices architecture, please consider starring the repository!** ⭐
